@@ -30,7 +30,7 @@ class DentalAppointment(models.Model):
     ], string='Treatment Type')
     patient_categ = fields.Selection([('old', 'Old'),('new','New')],string='Patient Category')
 
-    purpose = fields.Many2many('dental.purpose', string='Purpose')
+    # purpose = fields.Many2many('dental.purpose', string='Purpose')
     treatments = fields.Many2many('dental.treatment', string='Treatments')
     dentist_id = fields.Many2one(
         'hr.employee',
