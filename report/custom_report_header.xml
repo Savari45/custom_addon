@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Inherit standard external layout to modify the header -->
+    <template id="custom_standard_external_layout" inherit_id="web.external_layout_standard">
+        <!--report header-->
+        <xpath expr="//div[1]" position="replace">
+            <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+                <div class="row mb-2">
+                    <!-- Company Name and Tagline in 75% of the row -->
+                    <div class="col-8" style="text-align: center; padding-left: 130px;">
+                        <h2 style="font-weight: bold; font-size: 25px; margin: 0;">
+                            <t t-esc="company.name"/>
+                        </h2>
+                        <t t-esc="company.report_header"/>
+                        <div class="row mt-2">
+                            <div class="col-8" style="text-align: left;padding-right: 0px">
+                                <p>DR PRASANNA KUMAR, MDS,..<br/>ASS PROF and CONSULTANT
+                                    <br/>
+                                    ENDODONTIST &amp; IMPLANTOLOGIST
+                                    <br/>
+                                    9789543612
+                                    <br/>
+                                </p>
+                            </div>
+                            <div class="col-8" style="text-align: left;padding-left: 10px">
+                                <p>DR.SRUTHI MDS<br/>ORAL AND MAXILLOFACIAL<br/>PATHOLOGIST<br/>9791961201
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2" style="text-align: start; padding-left: 100px;">
+                        <img t-if="company.logo" t-att-src="'/web/image/res.company/' + str(company.id) + '/logo'" style="max-height: 180px; max-width: 200px; margin-top:0px"/>
+                    </div>
+                </div>
+
+            </div>
+
+        </xpath>
+    </template>
+</odoo>

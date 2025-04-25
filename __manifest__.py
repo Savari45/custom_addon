@@ -1,5 +1,5 @@
 {
-    'name': "Hospital Management",
+    'name': "Dental Hospital Management",
     'description': """
         Hospital management module which is used to mange the hospital functionalities prescription,patient,doctor diagnosis etc
     """,
@@ -26,21 +26,18 @@
         'views/dental_doctor_views.xml',
         'views/dental_prescription_views.xml',
         'views/dental_payment_log_views.xml',
-        # 'views/doctor_views.xml',
-        # 'views/dental_purpose_views.xml',
         'views/teeth_chart_views.xml',
         'views/dental_treatment_views.xml',
         'views/treatment_category_views.xml',
         'views/medicine_frequency_views.xml',
         'views/dental_medicine_views.xml',
-        # 'views/assets.xml',
         'views/medical_questions_views.xml',
         'views/dental_doctor_views.xml',
         'views/dental_specialist_views.xml',
         'views/dental_time_shift_views.xml',
         'report/dental_prescription_report.xml',
         'report/dental_prescription_templates.xml',
-        # 'wizard/xray_report_views.xml',
+        'report/custom_report_header.xml',
         'security/ir.model.access.csv'
     ],
 

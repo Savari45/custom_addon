@@ -5,8 +5,8 @@ class AccountPayment(models.Model):
     _inherit = 'account.payment'
 
     move_id = fields.Many2one('account.move', string="Related Invoice")
-    treatment_name = fields.Char(string="Treatment Done", compute="_compute_treatment_details", store=True)
-    treatment_cost = fields.Float(string="Actual Cost", compute="_compute_treatment_details", store=True)
+    treatment_name = fields.Char(string="Treatment Done")
+    treatment_cost = fields.Float(string="Actual Cost")
     amount_due = fields.Float(string="Balance", compute="_compute_amount_due", store=True)
     patient_sign = fields.Char(string="Patient Sign")
 

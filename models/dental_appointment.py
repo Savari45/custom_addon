@@ -5,13 +5,14 @@ class DentalAppointment(models.Model):
     _name = 'dental.appointment'
     _description = 'Dental Appointment'
     _inherit = ['mail.thread', 'mail.activity.mixin']
-    _rec_name = 'appointment_no' # Set appointment_no as the display name
+    _rec_name = 'display_name' # Set appointment_no as the display name
 
 
 
     patient_id = fields.Many2one('res.partner', string='Patient', required=True, domain="[('is_patient', '=', True)]")
     tooth_ids = fields.Many2many('dental.tooth', string="Teeth Affected")
     user_name = fields.Char(string="Responsible", default=lambda self: self.env.user.name)
+    display_name = fields.Char(string="Display Name", compute="_compute_display_name", store=True)
 
     patient_no = fields.Char(string='Patient No.',help="Type or select Patient No.")
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender')
@@ -90,6 +91,12 @@ class DentalAppointment(models.Model):
 
         return super(DentalAppointment, self).create(vals_list)
 
+    @api.depends('patient_id', 'shift_id')
+    def _compute_display_name(self):
+        for record in self:
+            patient_name = record.patient_id.name or "Unknown"
+            shift_name = record.shift_id.name or "No Time"
+            record.display_name = f"{patient_name} - {shift_name}"
 
     @api.onchange('patient_no')
     def _onchange_patient_no(self):
