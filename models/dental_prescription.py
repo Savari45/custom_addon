@@ -181,6 +181,7 @@ class DentalPrescription(models.Model):
                 })
             ],
             'is_treatment_invoice': True,
+            'doctor_id': self.prescribed_doctor_id.id,
         }
         treatment_invoice = self.env['account.move'].create(treatment_invoice_vals)
 
