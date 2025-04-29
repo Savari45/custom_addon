@@ -20,7 +20,6 @@ class AccountPayment(models.Model):
                     ('is_treatment_invoice', '=', True),
                     ('state', '=', 'posted'), ('payment_state', '!=', 'paid')
                 ])
-                print("invoices",[invoices])
 
                 for inv in invoices:
                     for line in inv.invoice_line_ids:

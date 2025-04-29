@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 
 class DentalAppointment(models.Model):
@@ -142,6 +143,11 @@ class DentalAppointment(models.Model):
             if not rec.patient_no:
                 rec.patient_no = rec.patient_id.patient_no  # Use existing patient_no
             rec.state = 'confirmed'
+            template = self.env['mail.template'].browse(self.env.ref('smile_hospital.dental_appointment_confirm_email_template').id)
+            if template:
+                    template.send_mail(rec.id, force_send=True)
+            else:
+                raise UserError("Mail Template not found. Please check the template.")
 
     def action_open_patient_form(self):
         """ Opens the form view of the patient when appointment is confirmed """
